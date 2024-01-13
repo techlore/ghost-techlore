@@ -1,18 +1,24 @@
 routes:
-  /rss/:
-    template: rss
+  /techlore-talks/rss/:
+    template: techlore-talks-rss
+    content_type: text/xml
+  /surveillance-report/rss/:
+    template: surveillance-report-rss
     content_type: text/xml
 
 collections:
   /:
-    permalink: /{slug}/
-    template: index
-    filter: tag:-blog
-  /blog/:
-    permalink: /blog/{slug}/
+    permalink: /post/{slug}/
     template: blog
-    filter: tag:blog
-    data: tag.blog
+    filter: tag:-[techlore-talks,surveillance-report]
+  /techlore-talks/:
+    permalink: /techlore-talks/{slug}/
+    template: index
+    filter: tag:techlore-talks
+  /surveillance-report/:
+    permalink: /surveillance-report/{slug}/
+    template: index
+    filter: tag:surveillance-report
 
 taxonomies:
   tag: /tag/{slug}/
