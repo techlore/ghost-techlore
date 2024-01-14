@@ -1,4 +1,6 @@
 routes:
+  /:
+    controller: channel
   /techlore-talks/rss/:
     template: techlore-talks-rss
     content_type: text/xml
@@ -7,7 +9,7 @@ routes:
     content_type: text/xml
 
 collections:
-  /:
+  /post/:
     permalink: /post/{slug}/
     template: blog
     filter: tag:-[techlore-talks,surveillance-report]

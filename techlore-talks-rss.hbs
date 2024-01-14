@@ -10,23 +10,28 @@
     xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0">
 
     <channel>
-        <title>{{@site.title}}</title>
-        <link>{{@site.url}}</link>
-        <description>{{@site.description}}</description>
+        <title>Techlore Talks</title>
+        <link>{{@site.url}}/techlore-talks</link>
+        <description><![CDATA[ Welcome to Techlore Talks - where we dive into technology, privacy, & security. Hosted by Henry & Jonah from Techlore. ]]></description>
         <language>{{@site.locale}}</language>
-        <copyright>{{@site.title}} Copyright {{date format="YYYY"}}</copyright>
-        <atom:link href="{{@site.url}}/rss/" rel="self" type="application/rss+xml" />
+        <copyright><![CDATA[ Copyright © 2022 - {{date format="YYYY"}} Techlore, Inc. ]]></copyright>
+        <atom:link href="{{@site.url}}/techlore-talks/rss/" rel="self" type="application/rss+xml" />
+        <itunes:new-feed-url>
+        {{@site.url}}/techlore-talks/rss/
+        </itunes:new-feed-url>
         <lastBuildDate>{{date format="ddd, DD MMM YYYY HH:mm:ss ZZ"}}
         </lastBuildDate>
-        <itunes:author>{{@site.title}}</itunes:author>
-        <itunes:summary>{{@site.description}}</itunes:summary>
+        <itunes:author><![CDATA[ Henry Fisher & Jonah Aragon ]]></itunes:author>
+        <itunes:subtitle><![CDATA[ Welcome to Techlore Talks - where we unpack privacy/security/technology concepts in free-form discussions. ]]></itunes:subtitle>
+        <itunes:type>episodic</itunes:type>
         <itunes:owner>
-            <itunes:name>Your Name</itunes:name>
-            <itunes:email>youremail@example.com</itunes:email>
+            <itunes:name>Techlore</itunes:name>
+            <itunes:email>contact@techlore.tech</itunes:email>
         </itunes:owner>
-        <itunes:explicit>clean</itunes:explicit>
+        <itunes:explicit>no</itunes:explicit>
         <itunes:image href="{{img_url @site.icon absolute="true"}}" />
         <itunes:category text="Technology"></itunes:category>
+        <itunes:category text="Education"></itunes:category>
 
         {{#get "posts" filter="tag:techlore-talks" include="tags,authors" as |episode|}}
             {{#foreach episode}}
@@ -45,6 +50,7 @@
                     </content:encoded>
                     <enclosure url="{{og_description}}" length="0"
                         type="audio/mpeg" />
+                    <itunes:author>{{authors separator=", " autolink="false"}}</itunes:author>
                     <itunes:subtitle>{{custom_excerpt}}</itunes:subtitle>
                     <itunes:summary>
                         <![CDATA[ {{content}} ]]>
